@@ -5,20 +5,29 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/material.dart' as _i6;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i4;
-import 'package:uniplex/views/onboarding/onboard.dart' as _i3;
+import 'package:stacked_services/stacked_services.dart' as _i7;
+import 'package:uniplex/views/authentication/login/login_view.dart' as _i4;
+import 'package:uniplex/views/authentication/signup/signup_view.dart' as _i5;
+import 'package:uniplex/views/onboarding/onboard_view.dart' as _i3;
 import 'package:uniplex/views/splash/splash_view.dart' as _i2;
 
 class Routes {
   static const splashView = '/';
 
-  static const onBoard = '/on-board';
+  static const onBoardView = '/on-board-view';
+
+  static const loginView = '/login-view';
+
+  static const signUpView = '/sign-up-view';
 
   static const all = <String>{
     splashView,
-    onBoard,
+    onBoardView,
+    loginView,
+    signUpView,
   };
 }
 
@@ -29,8 +38,16 @@ class StackedRouter extends _i1.RouterBase {
       page: _i2.SplashView,
     ),
     _i1.RouteDef(
-      Routes.onBoard,
-      page: _i3.OnBoard,
+      Routes.onBoardView,
+      page: _i3.OnBoardView,
+    ),
+    _i1.RouteDef(
+      Routes.loginView,
+      page: _i4.LoginView,
+    ),
+    _i1.RouteDef(
+      Routes.signUpView,
+      page: _i5.SignUpView,
     ),
   ];
 
@@ -41,9 +58,24 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i3.OnBoard: (data) {
+    _i3.OnBoardView: (data) {
+      final args = data.getArgs<OnBoardViewArguments>(
+        orElse: () => const OnBoardViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.OnBoard(),
+        builder: (context) => _i3.OnBoardView(key: args.key),
+        settings: data,
+      );
+    },
+    _i4.LoginView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i4.LoginView(),
+        settings: data,
+      );
+    },
+    _i5.SignUpView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i5.SignUpView(),
         settings: data,
       );
     },
@@ -55,7 +87,13 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i4.NavigationService {
+class OnBoardViewArguments {
+  const OnBoardViewArguments({this.key});
+
+  final _i6.Key? key;
+}
+
+extension NavigatorStateExtension on _i7.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -70,14 +108,44 @@ extension NavigatorStateExtension on _i4.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToOnBoard([
+  Future<dynamic> navigateToOnBoardView({
+    _i6.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.onBoardView,
+        arguments: OnBoardViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToLoginView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return navigateTo<dynamic>(Routes.onBoard,
+    return navigateTo<dynamic>(Routes.loginView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSignUpView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.signUpView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

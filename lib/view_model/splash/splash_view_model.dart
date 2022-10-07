@@ -10,7 +10,7 @@ class SplashViewModel extends BaseViewModel {
   void toOnboardOrAuthScreen() {
     Future.delayed(
       const Duration(seconds: 3),
-      () => _navService.replaceWith(Routes.onBoard),
+      () => _navService.replaceWith(Routes.onBoardView),
     );
   }
 }
