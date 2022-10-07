@@ -11,6 +11,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.nonReactive(
+      onModelReady: (model) => model.toOnboardOrAuthScreen(),
       viewModelBuilder: () => SplashViewModel(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: backgroundColor,
