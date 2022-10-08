@@ -2,6 +2,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:uniplex/views/authentication/login/login_view.dart';
 import 'package:uniplex/views/authentication/signup/signup_view.dart';
+import 'package:uniplex/views/authentication/verify_account/verify_account_view.dart';
 import 'package:uniplex/views/onboarding/onboard_view.dart';
 import 'package:uniplex/views/splash/splash_view.dart';
 
@@ -10,6 +11,7 @@ import 'package:uniplex/views/splash/splash_view.dart';
   MaterialRoute(page: OnBoardView),
   MaterialRoute(page: LoginView),
   MaterialRoute(page: SignUpView),
+  MaterialRoute(page: VerifyAccountView),
 ], dependencies: [
   LazySingleton<DialogService>(classType: DialogService),
   LazySingleton<NavigationService>(classType: NavigationService),

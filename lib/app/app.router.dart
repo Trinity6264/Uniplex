@@ -5,12 +5,14 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i6;
+import 'package:flutter/material.dart' as _i7;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i7;
+import 'package:stacked_services/stacked_services.dart' as _i8;
 import 'package:uniplex/views/authentication/login/login_view.dart' as _i4;
 import 'package:uniplex/views/authentication/signup/signup_view.dart' as _i5;
+import 'package:uniplex/views/authentication/verify_account/verify_account_view.dart'
+    as _i6;
 import 'package:uniplex/views/onboarding/onboard_view.dart' as _i3;
 import 'package:uniplex/views/splash/splash_view.dart' as _i2;
 
@@ -23,11 +25,14 @@ class Routes {
 
   static const signUpView = '/sign-up-view';
 
+  static const verifyAccountView = '/verify-account-view';
+
   static const all = <String>{
     splashView,
     onBoardView,
     loginView,
     signUpView,
+    verifyAccountView,
   };
 }
 
@@ -48,6 +53,10 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.signUpView,
       page: _i5.SignUpView,
+    ),
+    _i1.RouteDef(
+      Routes.verifyAccountView,
+      page: _i6.VerifyAccountView,
     ),
   ];
 
@@ -79,6 +88,12 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i6.VerifyAccountView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i6.VerifyAccountView(),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -90,10 +105,10 @@ class StackedRouter extends _i1.RouterBase {
 class OnBoardViewArguments {
   const OnBoardViewArguments({this.key});
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 }
 
-extension NavigatorStateExtension on _i7.NavigationService {
+extension NavigatorStateExtension on _i8.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -109,7 +124,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> navigateToOnBoardView({
-    _i6.Key? key,
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -146,6 +161,20 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.signUpView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToVerifyAccountView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.verifyAccountView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -109,10 +109,9 @@ class OnBoardView extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: size.height * .05),
-                                // model.pageIndex == pageData.length?
                                 if (model.pageIndex == pageData.length - 1)
                                   ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: model.toLoginScreen,
                                     child: Text(
                                       'Get Started!',
                                       style: GoogleFonts.poppins(
@@ -144,7 +143,7 @@ class OnBoardView extends StatelessWidget {
                         ),
                         onPressed: () {
                           if (model.pageIndex == 0) {
-                            log('Login Page');
+                            model.toLoginScreen();
                             return;
                           } else {
                             prevPage(--model.pageIndex);
@@ -167,7 +166,8 @@ class OnBoardView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      model.pageIndex == 0
+                      (model.pageIndex == 0) ||
+                              (model.pageIndex == pageData.length - 1)
                           ? SizedBox(
                               width: size.width * .18,
                             )
