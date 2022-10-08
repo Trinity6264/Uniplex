@@ -93,7 +93,7 @@ class LoginView extends StatelessWidget {
                       ),
                       SizedBox(
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: model.toForgotPasswordPage,
                           child: Text(
                             'Forgot Password?',
                             style: GoogleFonts.poppins(

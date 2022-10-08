@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:uniplex/constant/color_pallet.dart';
@@ -28,7 +26,7 @@ class VerifyAccountView extends StatelessWidget {
                   children: [
                     SizedBox(height: size.height * .01),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: model.back,
                       icon: Icon(
                         Icons.arrow_back_ios_outlined,
                         color: whiteColor,
@@ -83,7 +81,7 @@ class VerifyAccountView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: model.back,
                           child: Text(
                             'Change email',
                             style: GoogleFonts.poppins(

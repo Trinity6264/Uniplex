@@ -23,6 +23,6 @@ class SignUpViewModel extends BaseViewModel {
     _navService.replaceWith(Routes.loginView);
   }
   void toVerifyAccount() {
-    _navService.replaceWith(Routes.verifyAccountView);
+    _navService.navigateTo(Routes.verifyAccountView);
   }
 }

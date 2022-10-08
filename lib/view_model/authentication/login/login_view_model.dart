@@ -21,4 +21,8 @@ class LoginViewModel extends BaseViewModel {
   void toSignUpPage() {
     _navService.replaceWith(Routes.signUpView);
   }
+
+  void toForgotPasswordPage() {
+    _navService.navigateTo(Routes.forgotPasswordView);
+  }
 }

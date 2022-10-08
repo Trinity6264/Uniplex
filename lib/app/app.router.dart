@@ -5,11 +5,15 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/material.dart' as _i9;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i8;
+import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:uniplex/views/authentication/forgot_password/forgot_password_view.dart'
+    as _i7;
 import 'package:uniplex/views/authentication/login/login_view.dart' as _i4;
+import 'package:uniplex/views/authentication/new_password/new_password_view.dart'
+    as _i8;
 import 'package:uniplex/views/authentication/signup/signup_view.dart' as _i5;
 import 'package:uniplex/views/authentication/verify_account/verify_account_view.dart'
     as _i6;
@@ -27,12 +31,18 @@ class Routes {
 
   static const verifyAccountView = '/verify-account-view';
 
+  static const forgotPasswordView = '/forgot-password-view';
+
+  static const newPassWordView = '/new-pass-word-view';
+
   static const all = <String>{
     splashView,
     onBoardView,
     loginView,
     signUpView,
     verifyAccountView,
+    forgotPasswordView,
+    newPassWordView,
   };
 }
 
@@ -57,6 +67,14 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.verifyAccountView,
       page: _i6.VerifyAccountView,
+    ),
+    _i1.RouteDef(
+      Routes.forgotPasswordView,
+      page: _i7.ForgotPasswordView,
+    ),
+    _i1.RouteDef(
+      Routes.newPassWordView,
+      page: _i8.NewPassWordView,
     ),
   ];
 
@@ -94,6 +112,18 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i7.ForgotPasswordView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i7.ForgotPasswordView(),
+        settings: data,
+      );
+    },
+    _i8.NewPassWordView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i8.NewPassWordView(),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -105,10 +135,10 @@ class StackedRouter extends _i1.RouterBase {
 class OnBoardViewArguments {
   const OnBoardViewArguments({this.key});
 
-  final _i7.Key? key;
+  final _i9.Key? key;
 }
 
-extension NavigatorStateExtension on _i8.NavigationService {
+extension NavigatorStateExtension on _i10.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -124,7 +154,7 @@ extension NavigatorStateExtension on _i8.NavigationService {
   }
 
   Future<dynamic> navigateToOnBoardView({
-    _i7.Key? key,
+    _i9.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -175,6 +205,34 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.verifyAccountView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToForgotPasswordView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.forgotPasswordView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToNewPassWordView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.newPassWordView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
