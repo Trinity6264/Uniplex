@@ -108,7 +108,7 @@ class LoginView extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: model.toDashboardPage,
                       child: Text(
                         'Login',
                         style: GoogleFonts.poppins(

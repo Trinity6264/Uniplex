@@ -5,10 +5,10 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:stacked_services/stacked_services.dart' as _i11;
 import 'package:uniplex/views/authentication/forgot_password/forgot_password_view.dart'
     as _i7;
 import 'package:uniplex/views/authentication/login/login_view.dart' as _i4;
@@ -17,6 +17,7 @@ import 'package:uniplex/views/authentication/new_password/new_password_view.dart
 import 'package:uniplex/views/authentication/signup/signup_view.dart' as _i5;
 import 'package:uniplex/views/authentication/verify_account/verify_account_view.dart'
     as _i6;
+import 'package:uniplex/views/dashboard/dashboard_view.dart' as _i9;
 import 'package:uniplex/views/onboarding/onboard_view.dart' as _i3;
 import 'package:uniplex/views/splash/splash_view.dart' as _i2;
 
@@ -35,6 +36,8 @@ class Routes {
 
   static const newPassWordView = '/new-pass-word-view';
 
+  static const dashboardView = '/dashboard-view';
+
   static const all = <String>{
     splashView,
     onBoardView,
@@ -43,6 +46,7 @@ class Routes {
     verifyAccountView,
     forgotPasswordView,
     newPassWordView,
+    dashboardView,
   };
 }
 
@@ -75,6 +79,10 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.newPassWordView,
       page: _i8.NewPassWordView,
+    ),
+    _i1.RouteDef(
+      Routes.dashboardView,
+      page: _i9.DashboardView,
     ),
   ];
 
@@ -124,6 +132,12 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i9.DashboardView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i9.DashboardView(),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -135,10 +149,10 @@ class StackedRouter extends _i1.RouterBase {
 class OnBoardViewArguments {
   const OnBoardViewArguments({this.key});
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 }
 
-extension NavigatorStateExtension on _i10.NavigationService {
+extension NavigatorStateExtension on _i11.NavigationService {
   Future<dynamic> navigateToSplashView([
     int? routerId,
     bool preventDuplicates = true,
@@ -154,7 +168,7 @@ extension NavigatorStateExtension on _i10.NavigationService {
   }
 
   Future<dynamic> navigateToOnBoardView({
-    _i9.Key? key,
+    _i10.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -233,6 +247,20 @@ extension NavigatorStateExtension on _i10.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.newPassWordView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToDashboardView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.dashboardView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
